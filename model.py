@@ -19,16 +19,13 @@ def save_doc_as_file(uid=None,code=None,langage=None):
     if uid is None:
         uid = create_uid()
         code = '# Write your code here...'
-    if langage is None:
-        fileName = 'data/{}'.format(uid)
+    full_link = format(uid).split('.')
+    if langage is None or "":
+        with open('data/{}'.format(full_link[0]),'w') as fd:
+            fd.write(code)
     else:
-        if (format(uid).find(".") == -1):  #pas d'extension dans le nom
-            fileName = 'data/{}'.format(uid+'.'+langage)
-        else:
-            fileName = 'data/{}'.format(uid)
-
-    with open(fileName,'w') as fd:
-        fd.write(code)
+        with open('data/{}'.format(full_link[0]+'.'+langage),'w') as fd:
+            fd.write(code)
     return uid
 
 def read_doc_as_file(uid):
