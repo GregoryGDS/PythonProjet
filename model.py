@@ -39,7 +39,6 @@ def read_doc_as_file(uid):
         print('extension : '+extension)
     else:
         extension = ''
-
     try:
         with open('data/{}'.format(uid)) as fd:
             code = fd.read()
@@ -64,4 +63,3 @@ def get_last_entries_from_files(n=10,nlines=10):
                 code += '\n...'
         d.append({ 'uid':e.name, 'code':code })
     return d
-

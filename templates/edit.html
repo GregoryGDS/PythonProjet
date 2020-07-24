@@ -6,12 +6,17 @@
 	   <h1>Code Share: Share your codes!</h1>
 	   <p><a href="/">Home</a>
 	   {% if uid %}
-	   <p align=left><a href="/view/{{ uid }}">View only code: {{ uid }}</a>
+	    {% if idCode %}
+		    {% set id = idCode %}
+	    {% else %}
+		    {% set id = uid %}
+	    {% endif %}
+	   <p align=left><a href="/view/{{ id }}">View only code: {{ uid }}{% if langage and idCode %}.{{langage}} {% endif %}</a>
 	   <p align=left>URL: <input name='url' value="{{ url }}">
 	   {% endif %}
 	   <p align=center>
 	   <form method="POST" action="/publish" enctypwe="multipart/form-data">
-		    <p align=left>Langage: 
+		    <p align=left>Langage:
 			<select name='langage'>
 				<option value = '' {% if langage == '' %} selected {% endif %}>None</option>
 				<option value = 'html' {% if langage == 'html' %} selected {% endif %} >HTML</option>
@@ -25,7 +30,10 @@
 		      <textarea name="code" rows=20 cols=100>{{ code }}</textarea><br/>
 		     </td>
 		     <td valign=top>
-		       <input type="hidden" name="uid" value="{{ uid }}">
+			   <input type="hidden" name="uid" value="{{ uid }}">
+			   {% if idCode %}
+			       <input type="hidden" name="idCode" value="{{ idCode }}">
+			   {% endif %}
 		       <button type="submit" name="submit" value="edit">Save</button><br/>
 		       <button type="submit" name="submit" value="view">Save &amp; View</button>
 		     </td>

@@ -11,7 +11,12 @@
 	   <p align=left>
 		   <pre>{{ code }}</pre>
 	   </p>
-	   <a href="/edit/{{ uid }}">Edit</a></br>
+		{% if idCode %}
+			{% set id = idCode %}
+		{% else %}
+			{% set id = uid %}
+		{% endif %}
+	   <a href="/edit/{{ id }}">Edit</a></br>
 	   <a href="/create">Create New</a>
    </body>
 </html>
