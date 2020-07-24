@@ -7,6 +7,12 @@ from model_sqlite import save_doc_as_file, \
                   read_doc_as_file, \
                   get_last_entries_from_files
 
+from model_sqlite_user import saveUser, \
+                       get_all_users
+
+from datetime import datetime
+import os
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -29,6 +35,12 @@ def edit(idCode):
     langage = info['langage']
     uid = info['uid']
     idCode = info['idCode']
+
+    date = datetime.now()
+    ip_adresse = ip = request.remote_addr
+    navigateur = str(request.user_agent) #request.headers.get('User-Agent')
+    user = saveUser(None,ip_adresse, navigateur, date)
+
     if code is None:
         return render_template('error.html',uid=uid)
     d = dict( uid=uid, code=code, langage = langage, idCode = idCode,
@@ -62,7 +74,9 @@ def view(idCode):
 
 @app.route('/admin/')
 def admin():
-    pass
+    d = { 'all_user':get_all_users() }
+    print(d)
+    return render_template('admin.html',**d)
 
 if __name__ == '__main__':
     app.run()

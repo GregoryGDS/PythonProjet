@@ -7,6 +7,7 @@
 	   <p align=center>
 	   <img width=150 src='static/The_GNU_logo.png'/>
 	   <p align=center>
+		<a href="/admin">All Admin User-Agent</a>
 	   <form method="GET" action="/create">
 		   <button name="create">Create</button>
 	   </form>
@@ -14,6 +15,7 @@
 	   <h2>Derniers ajouts</h2>
 	   {% for entry in last_added %}
 	   {% if entry["idCode"] %}
+	   		<a href="/admin">Admin</a>
 	       {% set id = entry["idCode"] %}
 	   {% else %}
 	       {% set id = entry["uid"] %}
