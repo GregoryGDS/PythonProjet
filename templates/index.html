@@ -15,12 +15,12 @@
 	   <h2>Derniers ajouts</h2>
 	   {% for entry in last_added %}
 	   {% if entry["idCode"] %}
-	   		<a href="/admin">Admin</a>
-	       {% set id = entry["idCode"] %}
+	   		<a href="/admin">Admin</a> <!--partie 2/3-->
+		   {% set id = entry["idCode"] %}
+		   <input type='hidden' value="{{ entry["idCode"] }}">
 	   {% else %}
-	       {% set id = entry["uid"] %}
+	       {% set id = entry["uid"] %}<!--partie 1-->
 	   {% endif %}
-	   <input type='hidden' value="{{ entry["idCode"] }}">
 	   <p><a href="/view/{{ id }}">{{ entry["uid"] }}{% if entry["langage"] %}.{{entry["langage"]}} {% endif %}</a>
 	   <p><pre>{{ entry["code"] }}</pre>
 	   <hr/>

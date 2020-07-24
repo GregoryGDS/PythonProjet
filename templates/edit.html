@@ -7,9 +7,9 @@
 	   <p><a href="/">Home</a>
 	   {% if uid %}
 	    {% if idCode %}
-		    {% set id = idCode %}
+		    {% set id = idCode %} <!--partie 2/3-->
 	    {% else %}
-		    {% set id = uid %}
+		    {% set id = uid %}<!--partie 1-->
 	    {% endif %}
 	   <p align=left><a href="/view/{{ id }}">View only code: {{ uid }}{% if langage and idCode %}.{{langage}} {% endif %}</a>
 	   <p align=left>URL: <input name='url' value="{{ url }}">
@@ -32,7 +32,7 @@
 		     <td valign=top>
 			   <input type="hidden" name="uid" value="{{ uid }}">
 			   {% if idCode %}
-			       <input type="hidden" name="idCode" value="{{ idCode }}">
+			       <input type="hidden" name="idCode" value="{{ idCode }}"> <!--partie 2/3-->
 			   {% endif %}
 		       <button type="submit" name="submit" value="edit">Save</button><br/>
 		       <button type="submit" name="submit" value="view">Save &amp; View</button>

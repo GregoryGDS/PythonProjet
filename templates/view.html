@@ -12,9 +12,9 @@
 		   <pre>{{ code }}</pre>
 	   </p>
 		{% if idCode %}
-			{% set id = idCode %}
+			{% set id = idCode %} <!--partie 2/3-->
 		{% else %}
-			{% set id = uid %}
+			{% set id = uid %} <!--partie 1-->
 		{% endif %}
 	   <a href="/edit/{{ id }}">Edit</a></br>
 	   <a href="/create">Create New</a>
